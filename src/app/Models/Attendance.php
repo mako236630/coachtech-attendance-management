@@ -19,6 +19,11 @@ class Attendance extends Model
         'status',
     ];
 
+    protected $casts = [
+        'punched_in_at' => 'datetime',
+        'punched_out_at' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
