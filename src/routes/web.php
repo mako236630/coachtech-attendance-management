@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AttendanceListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,5 @@ Route::middleware('auth')->group(function () {
     
 Route::get("/attendance", [AttendanceController::class, "index"])->name("attendance.index");
 Route::post("/attendance", [AttendanceController::class, "store"])->name("attendance.store");
-
+Route::get("attendance/list", [AttendanceListController::class, "index"])->name("attendance.list");
 });
