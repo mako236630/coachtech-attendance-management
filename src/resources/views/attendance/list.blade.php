@@ -61,16 +61,12 @@
                                 );
                             }
 
-                            // 2. 勤務時間の合計（実労働時間）の計算
                             if ($attendance->punched_in_at && $attendance->punched_out_at) {
                                 $in = \Carbon\Carbon::parse($attendance->punched_in_at);
                                 $out = \Carbon\Carbon::parse($attendance->punched_out_at);
 
-                                // 総拘束時間（分） - 休憩合計（分）
-                                // 休憩が0でも、ここで正しく引き算が行われます
                                 $netWorkMinutes = $in->diffInMinutes($out) - $totalRestMinutes;
 
-                                // マイナスにならないようにガード
                                 if ($netWorkMinutes < 0) {
                                     $netWorkMinutes = 0;
                                 }
@@ -89,7 +85,14 @@
                         </td>
                         <td>{{ $formattedRest }}</td>
                         <td>{{ $workTime }}</td>
-                        <td><a href="#">詳細</a></td>
+
+                        <td>
+                            @if ($attendance)
+                                <a href="{{ route('attendance.show', ['id' => $attendance->id]) }}">詳細</a>
+                            @else
+                                &nbsp;
+                            @endif
+                        </td>
                     </tr>
                 @endfor
             </tbody>
