@@ -18,9 +18,9 @@
         <div class="table__container">
             @if ($attendances->isEmpty())
                 @if ($tab === 'requestok')
-                    <p>承認済みはありません</p>
+                    <p>承認済みのデータはありません</p>
                 @else
-                    <p>承認待ちはありません</p>
+                    <p>承認待ちのデータはありません</p>
                 @endif
             @else
                 <table class="request_list-table">

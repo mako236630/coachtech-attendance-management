@@ -43,8 +43,14 @@
                         value="{{ old('out_time', \Carbon\Carbon::parse($attendance->punched_out_at)->format('H:i')) }}">
 
                     <div class="error">
+                        @error('in_time')
+                        <p>{{ $message }}</p>
+                        @enderror
+                        @error('out_time')
+                        <p>{{ $message }}</p>
+                        @enderror
                         @error('time_error')
-                            <p class="error-message">{{ $message }}</p>
+                            <p>{{ $message }}</p>
                         @enderror
                     </div>
                     @endif
@@ -74,10 +80,10 @@
 
                                 <div class="error">
                                     @error("rests.{$rest->id}.in")
-                                        <p class="error-message">{{ $message }}</p>
+                                        <p>{{ $message }}</p>
                                     @enderror
                                     @error("rests.{$rest->id}.out")
-                                        <p class="error-message">{{ $message }}</p>
+                                        <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                             @endif
@@ -95,7 +101,7 @@
 
                             <div class="error">
                                 @error('note')
-                                    <p class="error-message">{{ $message }}</p>
+                                    <p>{{ $message }}</p>
                                 @enderror
                             </div>
                         @endif

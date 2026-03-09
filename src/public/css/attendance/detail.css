@@ -40,7 +40,6 @@ h1 {
 .detail__table td {
     width: auto;
     padding: 20px 40px;
-    height: 20px;
     white-space: nowrap;
     border-bottom: 2px solid #f0f0f0;
     font-size: 15px;
@@ -127,7 +126,7 @@ textarea {
 
 .error {
     color: #ff4d4f;
-    font-size: 12px;
+    font-size: 10px;
     margin-bottom: 15px;
     min-height: 18px;
 }
