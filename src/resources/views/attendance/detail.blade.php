@@ -6,9 +6,7 @@
 
 @section('content')
     <div class="attendance__detail-container">
-        <div class="title">
-            <h1>勤怠詳細</h1>
-        </div>
+        <h1>勤怠詳細</h1>
 
         <form action="{{ route('attendance.update', $attendance->id) }}" method="post">
             @csrf
@@ -68,7 +66,8 @@
                                 <span class="range-tilde">～</span>
                                 <span>{{ $rest->requested_out_at ? date('H:i', strtotime($rest->requested_out_at)) : '' }}</span>
                             @else
-                                <input type="time" name="rests[{{ $rest->id }}][in]" value="{{ old("rests.{$rest->id}.in", $rest->view_in) }}">
+                                <input type="time" name="rests[{{ $rest->id }}][in]"
+                                    value="{{ old("rests.{$rest->id}.in", $rest->view_in) }}">
                                 <span class="range-tilde">～</span>
                                 <input type="time" name="rests[{{ $rest->id }}][out]"
                                     value="{{ old("rests.{$rest->id}.out", $rest->view_out) }}">

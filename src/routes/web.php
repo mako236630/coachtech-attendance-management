@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AttendanceListController;
+use App\Http\Controllers\RquestlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::get("attendance/list", [AttendanceListController::class, "index"])->name(
 Route::get("/attendance/detail/{id}", [AttendanceListController::class, "show"])->name("attendance.show");
 });
 Route::post("/attendance/detail/{id}", [AttendanceListController::class, "updateRequest"])->name("attendance.update");
+Route::get("/stamp_correction_request/list", [RquestlistController::class, "index"])->name("requestlist.index");

@@ -6,13 +6,11 @@
 
 @section('content')
     <div class="attendance-container">
-        <div class="title">
             <h1>勤怠一覧</h1>
-        </div>
 
         <div class="month-stepper">
             <a href="?display_month={{ $prevMonth }}">← 前月</a>
-            <span>📅 {{ str_replace('-', '/', $displayMonth) }}</span>
+            <span><img src="{{ asset('images/calendar.png') }}" alt="logo"> {{ str_replace('-', '/', $displayMonth) }}</span>
             <a href="?display_month={{ $nextMonth }}">翌月 →</a>
         </div>
 

@@ -23,7 +23,7 @@
             <a href="{{ route('attendance.list') }}">
                 <button type="submit">勤怠一覧</button>
             </a>
-            <a href="">
+            <a href="{{ route('requestlist.index') }}">
                 <button type="submit">申請</button>
             </a>
 
