@@ -131,6 +131,15 @@ textarea {
     min-height: 18px;
 }
 
+.approve {
+    padding: 10px 30px 10px 30px;
+    font-size: 17px;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 860px) {
     .attendance__detail-container {
         max-width: 700px;
@@ -264,5 +273,14 @@ textarea {
         font-size: 12px;
         margin-bottom: 15px;
         min-height: 18px;
+    }
+
+    .approve {
+        padding: 10px 30px 10px 30px;
+        font-size: 17px;
+        border-radius: 5px;
+        background-color: gray;
+        color: white;
+        font-weight: bold;
     }
 }
