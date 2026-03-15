@@ -50,7 +50,7 @@ Route::middleware(['auth', 'Admin'])->group(function () {
 
 
 
-Route::middleware(['auth', 'RejectAdmin'])->group(function () {
+Route::middleware(['auth', 'RejectAdmin', 'verified'])->group(function () {
 
     Route::get("/attendance", [AttendanceController::class, "index"])->name("attendance.index");
     Route::post("/attendance", [AttendanceController::class, "store"])->name("attendance.store");
@@ -59,4 +59,5 @@ Route::middleware(['auth', 'RejectAdmin'])->group(function () {
     Route::post("/attendance/detail/{id}", [AttendanceListController::class, "updateRequest"])->name("attendance.update");
 });
 
+// 申請一覧画面のパスは「管理者・一般ユーザーと同じパスを使用」にする為、ミドルウエアは管理者・一般ユーザー関係なく、ログインがあれば閲覧できるようにして区別しました
 Route::get("/stamp_correction_request/list", [RquestlistController::class, "index"])->name("requestlist.index")->middleware('auth');

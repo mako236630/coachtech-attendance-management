@@ -29,24 +29,23 @@ class AdminrequestController extends Controller
         DB::transaction(
             function () use ($attendance) {
                 $attendance->update([
-                    'punched_in_at'  => $attendance->request_in_at,
-                    'punched_out_at' => $attendance->request_out_at,
+                    'punched_in_at'  => $attendance->requested_in_at,
+                    'punched_out_at' => $attendance->requested_out_at,
                     'status'         => 2,
-                    'request_in_at'  => null,
-                    'request_out_at' => null,
+                    'requested_in_at'  => null,
+                    'requested_out_at' => null,
                 ]);
 
                 foreach ($attendance->rests as $rest) {
-                    if ($rest->requested_in_at && $rest->requested_out_at) {
-                        $rest->update(
-                            [
-                                'rest_in_at' => $rest->requested_in_at,
-                                'rest_out_at' => $rest->requested_out_at,
-                                'requested_in_at' => null,
-                                'requested_out_at' => null,
-                            ]
-                        );
-                    }
+
+                    $rest->update(
+                        [
+                            'rest_in_at' => $rest->requested_in_at,
+                            'rest_out_at' => $rest->requested_out_at,
+                            'requested_in_at' => null,
+                            'requested_out_at' => null,
+                        ]
+                    );
                 }
             }
         );

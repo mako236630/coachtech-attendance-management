@@ -7,7 +7,7 @@
 @section('content')
     <div class="admin__list-container">
 
-        <h1>{{ $today->format('Y年m月d日') }}の勤怠</h1>
+        <h1>{{ $displaytime->format('Y年m月d日') }}の勤怠</h1>
 
         <div class="prev__next">
             <a href="{{ route('admin.list', ['date' => $prevDate]) }}">← 前日</a>

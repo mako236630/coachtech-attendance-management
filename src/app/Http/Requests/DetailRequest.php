@@ -29,9 +29,6 @@ class DetailRequest extends FormRequest
             "in_time" => 'required',
             "out_time" => 'required',
             "note" => 'required|string|max:20',
-
-            "rests.*.in" => 'required',
-            "rests.*.out" => 'required',
         ];
     }
 
@@ -50,17 +47,22 @@ class DetailRequest extends FormRequest
                     $restIn = $rest['in'];
                     $restOut = $rest['out'];
 
-                    if ($restIn && ($restIn < $inTime || $restIn > $outTime)) {
-                        $validator->errors()->add("rests.$id.in", '休憩時間が不適切な値です');
+                    if (!empty($restIn)) {
+                        if ($restIn && ($restIn < $inTime || $restIn > $outTime)) {
+                            $validator->errors()->add("rests.$id.in", '休憩時間が不適切な値です');
+                        }
                     }
 
-
-                    if ($restOut && $restOut > $outTime) {
-                        $validator->errors()->add("rests.$id.out", '休憩時間もしくは退勤時間が不適切な値です');
+                    if (!empty($restOut)) {
+                        if ($restOut && $restOut > $outTime) {
+                            $validator->errors()->add("rests.$id.out", '休憩時間もしくは退勤時間が不適切な値です');
+                        }
                     }
 
-                    if ($restIn && $restOut && $restIn >= $restOut) {
-                        $validator->errors()->add("rests.$id.in", '休憩時間が不適切な値です');
+                    if (!empty($restIn) && !empty($restOut)) {
+                        if ($restIn && $restOut && $restIn >= $restOut) {
+                            $validator->errors()->add("rests.$id.in", '休憩時間が不適切な値です');
+                        }
                     }
                 }
             }
@@ -74,9 +76,6 @@ class DetailRequest extends FormRequest
             "out_time.required" => "退勤時間を入力してください",
             "note.required" => "備考を記入してください",
             "note.max" => "備考は20文字以内で入力してください",
-
-            "rests.*.in.required" => "休憩開始時間の入力をしてください",
-            "rests.*.out.required" => "休憩終了時間の入力をしてください",
         ];
     }
 }

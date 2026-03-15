@@ -18,6 +18,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        // is_adminは管理者(1)一般ユーザー(0)の設定です
+
         // 管理者用ユーザー
         $admin_user = User::create([
             "name" => "管理者",
@@ -27,47 +29,59 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $user = User::create([
-            'name' => 'テスト太郎',
+            'name' => 'テスト用ユーザー',
             'email' => 'test@example.com',
             'password' => Hash::make('password'),
-            'is_admin' => false,
+            'is_admin' => 0,
+            'email_verified_at' => now(),
         ]);
 
+        $user1 = User::create([
+            'name' =>'西玲奈',
+            'email' => 'reina.n@coachtech.com',
+            'password' => Hash::make('password1'),
+            'is_admin' => 0,
+            'email_verified_at' => now(),
+        ]);
 
-        $start = Carbon::now()->subMonths(2)->startOfMonth();
-        $end = Carbon::now();
+        $user2 = User::create([
+            'name' => '山田太郎',
+            'email' => 'taro.y@coachtech.com',
+            'password' => Hash::make('password2'),
+            'is_admin' => 0,
+            'email_verified_at' => now(),
+        ]);
 
-        for ($date = $start->copy(); $date <= $end; $date->addDay()) {
-            if ($date->isWeekend()) continue;
+        $user3 = User::create([
+            'name' => '増田一世',
+            'email' => 'issei.m@coachtech.com',
+            'password' => Hash::make('password3'),
+            'is_admin' => 0,
+            'email_verified_at' => now(),
+        ]);
 
-            if ($date->isToday()) continue;
+        $user4 = User::create([
+            'name' => '山本敬吉',
+            'email' => 'keikichi.y@coachtech',
+            'password' => Hash::make('password4'),
+            'is_admin' => 0,
+            'email_verified_at' => now(),
+        ]);
 
-            $attendance = Attendance::create([
-                'user_id' => $user->id,
-                'created_at' => $date->format('Y-m-d H:i:s'),
-                'punched_in_at' => $date->copy()->setTime(9, 0, 0),
-                'punched_out_at' => $date->copy()->setTime(18, 0, 0),
-            ]);
+        $user5 = User::create([
+            'name' => '秋田朋美',
+            'email' => 'tomomi.a@coachtech',
+            'password' => Hash::make('password5'),
+            'is_admin' => 0,
+            'email_verified_at' => now(),
+        ]);
 
-            Rest::create([
-                'attendance_id' => $attendance->id,
-                'rest_in_at' => $date->copy()->setTime(12, 0, 0),
-                'rest_out_at' => $date->copy()->setTime(13, 0, 0),
-            ]);
-        }
-
-        $users = User::factory(6)->create();
-
-        foreach ($users as $user) {
-            $attendances = Attendance::factory(90)->create(['user_id' => $user->id]);
-
-            foreach ($attendances as $attendance) {
-                Rest::factory()->create([
-                    'attendance_id' => $attendance->id,
-                    'rest_in_at' => (clone $attendance->punched_in_at)->modify('+4 hours'),
-                    'rest_out_at' => (clone $attendance->punched_in_at)->modify('+5 hours'),
-                ]);
-            }
-        }
+        $user6 = User::create([
+            'name' => '中西教夫',
+            'email' => 'norio.n@coachtech',
+            'password' => Hash::make('password6'),
+            'is_admin' => 0,
+            'email_verified_at' => now(),
+        ]);
     }
 }
