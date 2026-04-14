@@ -10,19 +10,13 @@ body {
     padding: 20px;
     background-color: black;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     box-sizing: border-box;
-}
-
-.header_logo img {
-    width: 400px;
 }
 
 .header__nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin-left: auto;
     gap: 30px;
 }
 
@@ -57,9 +51,6 @@ a {
         background-color: black;
     }
 
-    .header_logo img {
-        width: 300px;
-    }
 
     .container {
         max-width: 860px;

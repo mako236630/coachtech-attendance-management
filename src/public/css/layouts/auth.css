@@ -10,10 +10,6 @@ body {
     background-color: black;
 }
 
-.header_logo img {
-    width: 400px;
-}
-
 .container {
     max-width: 1540px;
 }
@@ -30,10 +26,6 @@ body {
         width: 100%;
         padding: 20px;
         background-color: black;
-    }
-
-    .header_logo img {
-        width: 300px;
     }
 
     .container {

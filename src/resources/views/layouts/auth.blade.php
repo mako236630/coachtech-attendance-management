@@ -12,9 +12,6 @@
 
 <body>
 <header class="header">
-    <div class="header_logo">
-        <img src="{{ asset('images/COACHTECH.png') }}" alt="logo">
-    </div>
 </header>
     <main class="container">
         @yield('content')

@@ -12,9 +12,6 @@
 
 <body>
     <header class="header">
-        <div class="header_logo">
-            <img src="{{ asset('images/COACHTECH.png') }}" alt="logo">
-        </div>
 
         <div class="header__nav">
             <a href="{{ route('admin.list') }}">
