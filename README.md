@@ -66,7 +66,8 @@ php artisan test
  - nginx 1.21.1
  - MySQL 8.0.26
  - php 8.1.34
- - Laravel 8.83.8  
+ - Laravel 8.83.8
+ - AI Support Gemini
  
 ## ER図  
  - rests(休憩データ): 一日の中で複数回の休憩を可能にする為、休憩データを独立させattendances(勤怠データ)と1対多で紐付けています。
